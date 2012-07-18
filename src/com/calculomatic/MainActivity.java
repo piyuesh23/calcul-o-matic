@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.widget.*;
+import android.view.View;
+import android.view.View.OnClickListener;
+import org.apache.http.auth.*;
 
 public class MainActivity extends Activity {
 	private EventsDataSource datasource;
@@ -20,6 +23,7 @@ public class MainActivity extends Activity {
 		datasource.createEvent(event);
 		System.out.print(datasource.getAllEvents());
 		Button login = (Button)findViewById(R.id.button1);
+		login.setOnClickListener(loginListener);
     }
 
     @Override
@@ -27,6 +31,11 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-
+    private OnClickListener loginListener = new OnClickListener() {
+	    public void onClick(View v) {
+			TextView username = (TextView)findViewById(R.id.textView1);
+		    username.setText("hello world");
+		}
+	};
     
 }
