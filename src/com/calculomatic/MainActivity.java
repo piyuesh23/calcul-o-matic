@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.widget.*;
 
 public class MainActivity extends Activity {
 	private EventsDataSource datasource;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
 		datasource.open();
 		datasource.createEvent(event);
 		System.out.print(datasource.getAllEvents());
+		Button login = (Button)findViewById(R.id.button1);
     }
 
     @Override
