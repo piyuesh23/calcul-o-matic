@@ -8,6 +8,7 @@ import android.support.v4.app.NavUtils;
 
 public class MainActivity extends Activity {
 	private EventsDataSource datasource;
+	public String event = new String("hello");
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +16,8 @@ public class MainActivity extends Activity {
         
         datasource = new EventsDataSource(this);
 		datasource.open();
+		datasource.createEvent(event);
+		System.out.print(datasource.getAllEvents());
     }
 
     @Override

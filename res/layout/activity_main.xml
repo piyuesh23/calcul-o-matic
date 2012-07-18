@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/nexus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:scrollbars="horizontal|vertical" >
 
     <TextView
@@ -23,7 +22,10 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="34dp"
-        android:ems="10" android:inputType="text"/>
+        android:ems="10" android:inputType="text"
+		android:hint="@string/hint_username">
+		<requestFocus />
+	</EditText>
 
     <TextView
         android:id="@+id/textView2"
@@ -33,7 +35,8 @@
         android:layout_below="@+id/editText2"
         android:layout_marginTop="31dp"
         android:text="@string/password"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+		android:hint="@string/hint_password"/>
 
     <EditText
         android:id="@+id/editText3"
@@ -44,8 +47,6 @@
         android:layout_marginTop="31dp"
         android:ems="10"
         android:inputType="textPassword" >
-
-        <requestFocus />
     </EditText>
 
     <Button
@@ -61,7 +62,7 @@
         android:id="@+id/register"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+		android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
         android:text="@string/register" />
 
