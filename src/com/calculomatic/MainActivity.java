@@ -1,49 +1,54 @@
 package com.calculomatic;
 
-import android.os.Bundle;
+import java.util.List;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.widget.*;
 import android.view.View;
-import android.view.View.OnClickListener;
-import org.apache.http.auth.*;
+import android.widget.EditText;
+import android.widget.TextView;
+
 
 public class MainActivity extends Activity {
 	private EventsDataSource datasource;
-	public String event = new String("hello");
+	public Authentication auth;
+	public String event = new String("even1");
+	public List l1;
+	public static final String LOG_TAG = "Calculomatic";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
         datasource = new EventsDataSource(this);
 		datasource.open();
 		datasource.createEvent(event);
-		System.out.print(datasource.getAllEvents());
-		Button login = (Button)findViewById(R.id.button1);
-		login.setOnClickListener(loginListener);
-		Button register = (Button)findViewById(R.id.register);
-		register.setOnClickListener(registerListener);
+		l1 = datasource.getAllEvents();					
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
-    }
-    
-    private OnClickListener loginListener = new OnClickListener() {
-	    public void onClick(View v) {
-			TextView username = (TextView)findViewById(R.id.textView1);
-		    username.setText("hello world");
-		}
-	};
+    }    
+	    	
+	public void sendMessage(View view) {
+	   	Intent intent = new Intent(this, RegisterActivity.class);
+    	startActivity(intent);
+	}	
 	
-    private OnClickListener registerListener = new OnClickListener() {
-	    public void onClick(View v) {
-			setContentView(R.layout.activity_register);
+	public void Authenticate(View view) {
+		EditText username = (EditText)findViewById(R.id.editText2);
+		EditText password = (EditText)findViewById(R.id.editText3);
+		if((username.getText().toString().equals("piyuesh"))&&(password.getText().toString().equals("admin"))) {
+		   	Intent intent = new Intent(this, EventsActivity.class);
+	    	startActivity(intent);
 		}
-	};
+		else {
+			TextView error = (TextView)findViewById(R.id.error);
+			error.setText("Invalid Credentials");
+		}
+	}
+	
 }

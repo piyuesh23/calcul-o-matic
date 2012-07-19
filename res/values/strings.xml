@@ -13,4 +13,9 @@
 	<string name="full_name">Full Name</string>
 	<string name="email">Email</string>
 	<string name="confirm_password">Confirm Password</string>
+	<string name="add_event">Add Event</string>
+	<string name="event_name">Event Name</string>
+	<string name="create_event">Create Event</string>
+	<string name="event_place">Place</string>
+	<string name="empty"></string>
 </resources>
