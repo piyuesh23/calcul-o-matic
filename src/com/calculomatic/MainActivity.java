@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
 		System.out.print(datasource.getAllEvents());
 		Button login = (Button)findViewById(R.id.button1);
 		login.setOnClickListener(loginListener);
+		Button register = (Button)findViewById(R.id.register);
+		register.setOnClickListener(registerListener);
     }
 
     @Override
@@ -31,11 +33,17 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
     private OnClickListener loginListener = new OnClickListener() {
 	    public void onClick(View v) {
 			TextView username = (TextView)findViewById(R.id.textView1);
 		    username.setText("hello world");
 		}
 	};
-    
+	
+    private OnClickListener registerListener = new OnClickListener() {
+	    public void onClick(View v) {
+			setContentView(R.layout.activity_register);
+		}
+	};
 }

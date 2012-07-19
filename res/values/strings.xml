@@ -10,4 +10,7 @@
     <string name="register">Register</string>
 	<string name="hint_username">Username</string>
 	<string name="hint_password">Password</string>
+	<string name="full_name">Full Name</string>
+	<string name="email">Email</string>
+	<string name="confirm_password">Confirm Password</string>
 </resources>
