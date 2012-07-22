@@ -23,6 +23,7 @@
         <activity android:name="com.calculomatic.RegisterActivity" />
         <activity android:name="com.calculomatic.EventsActivity" />
         <activity android:name="com.calculomatic.AddEventActivity" />
+        <activity android:name="com.calculomatic.AddContributorActivity" />
     </application>
 
 </manifest>

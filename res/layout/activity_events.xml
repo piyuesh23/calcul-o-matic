@@ -1,23 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ListView
+        android:id="@+id/listView1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:layout_marginBottom="50dp">
+    </ListView>
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
-        </ListView>
+    <Button
+        android:id="@+id/add_event"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"        
+        android:layout_marginTop="30dp"
+        android:text="@string/add_event"
+        android:layout_below="@+id/listView1" 
+        android:layout_alignParentBottom="true"
+        android:onClick="sendMessage"/>
 
-        <Button
-            android:id="@+id/add_event"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/listView1"
-            android:layout_marginTop="30dp"
-            android:text="@string/add_event" 
-            android:onClick="sendMessage"/>
+</RelativeLayout>
 
-    </RelativeLayout>

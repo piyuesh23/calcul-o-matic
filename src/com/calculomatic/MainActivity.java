@@ -1,5 +1,6 @@
 package com.calculomatic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,19 +13,13 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
-	private EventsDataSource datasource;
-	public Authentication auth;
-	public String event = new String("even1");
-	public List l1;
+	private UsersDataSource datasource;
+	List<User> users = new ArrayList<User>();
 	public static final String LOG_TAG = "Calculomatic";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        datasource = new EventsDataSource(this);
-		datasource.open();
-		datasource.createEvent(event);
-		l1 = datasource.getAllEvents();					
+        setContentView(R.layout.activity_main);        				
     }
 
     @Override
@@ -39,16 +34,22 @@ public class MainActivity extends Activity {
 	}	
 	
 	public void Authenticate(View view) {
+		datasource = new UsersDataSource(this);
+		datasource.open();	
+		users = datasource.getAllUsers();
 		EditText username = (EditText)findViewById(R.id.editText2);
 		EditText password = (EditText)findViewById(R.id.editText3);
-		if((username.getText().toString().equals("piyuesh"))&&(password.getText().toString().equals("admin"))) {
-		   	Intent intent = new Intent(this, EventsActivity.class);
-	    	startActivity(intent);
+		
+		for(User u : users) {
+			if((username.getText().toString().equals(u.getUsername().toString()))&&(password.getText().toString().equals(u.getPassword().toString()))) {
+			   	Intent intent = new Intent(this, EventsActivity.class);
+		    	startActivity(intent);
+			}
 		}
-		else {
-			TextView error = (TextView)findViewById(R.id.error);
-			error.setText("Invalid Credentials");
-		}
+		
+		TextView error = (TextView)findViewById(R.id.error);
+		error.setText("Invalid Credentials");
+	
 	}
 	
 }

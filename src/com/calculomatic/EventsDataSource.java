@@ -12,8 +12,8 @@ import android.database.sqlite.SQLiteDatabase;
 public class EventsDataSource {
 	private SQLiteDatabase database;
 	private SqliteAdapter dbHelper;
-	private String[] allColumns = { SqliteAdapter.COLUMN_ID,
-			SqliteAdapter.COLUMN_EVENT};
+	private String[] allColumns = { SqliteAdapter.COLUMN_EVENT_ID,
+			SqliteAdapter.COLUMN_EVENT, SqliteAdapter.COLUMN_PLACE};
 
 	public EventsDataSource(Context context) {
 		dbHelper = new SqliteAdapter(context);
@@ -27,13 +27,14 @@ public class EventsDataSource {
 		dbHelper.close();
 	}
 	
-	public Event createEvent(String event) {
+	public Event createEvent(String event, String place) {
 		ContentValues values = new ContentValues();
 		values.put(SqliteAdapter.COLUMN_EVENT, event);
+		values.put(SqliteAdapter.COLUMN_PLACE, place);
 		long insertId = database.insert(SqliteAdapter.TABLE_EVENTS, null,
 				values);
 		Cursor cursor = database.query(SqliteAdapter.TABLE_EVENTS,
-				allColumns, SqliteAdapter.COLUMN_ID + " = " + insertId, null,
+				allColumns, SqliteAdapter.COLUMN_EVENT_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Event newEvent = cursorToEvent(cursor);
@@ -60,7 +61,8 @@ public class EventsDataSource {
 	private Event cursorToEvent(Cursor cursor) {
 		Event event = new Event();
 		event.setId(cursor.getLong(0));
-		event.setComment(cursor.getString(1));
+		event.setEvent(cursor.getString(1));
+		event.setPlace(cursor.getString(2));
 		return event;
 	}
 }
