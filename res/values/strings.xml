@@ -18,4 +18,5 @@
 	<string name="create_event">Create Event</string>
 	<string name="event_place">Place</string>
 	<string name="empty"></string>
+	<string name="add_contributor">Add Contributor</string>
 </resources>

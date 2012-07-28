@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+
 public class UsersDataSource {
 	private SQLiteDatabase database;
 	private SqliteAdapter dbHelper;

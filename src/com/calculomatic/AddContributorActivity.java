@@ -3,36 +3,34 @@ package com.calculomatic;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
-public class AddContributorActivity extends Activity {
+public class AddContributorActivity extends ListActivity {
 	private UsersDataSource datasource;
 	public List<User> users = new ArrayList<User>();
-	
+	public List<String> Users = new ArrayList<String>();
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);				
-		TableLayout tl=new TableLayout(this);
+		super.onCreate(savedInstanceState);						
+		
 		datasource = new UsersDataSource(this);
 		datasource.open();
 		users = datasource.getAllUsers();
 		for(User u : users) {		
-			TableRow tr=new TableRow(this);  
-			CheckBox chk=new CheckBox(this);  
-			chk.setText(u.getUsername().toString());  
-			tr.addView(chk);         
-			tl.addView(tr);  
+			Users.add(u.getUsername().toString());
 		}
-		TableRow tr = new TableRow(this);
-		Button addContributors = new Button(this);
-		addContributors.setText("Add Contributors");
-		tr.addView(addContributors);
-		tl.addView(tr);
-		setContentView(tl); 
+		setListAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_multiple_choice, Users));
+		final ListView listView = getListView();
+
+        listView.setItemsCanFocus(false);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        setContentView(R.layout.activity_contributor);
 	}
 }
