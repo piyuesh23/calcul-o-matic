@@ -41,6 +41,19 @@ public class UsersDataSource {
 		cursor.moveToFirst();
 		User newUser = cursorToEvent(cursor);
 		cursor.close();
+		close();
+		return newUser;
+	}
+	
+	public User getUser(String uid) {
+		ContentValues values = new ContentValues();
+		long userid = Long.parseLong(uid);
+		Cursor cursor = database.query(SqliteAdapter.TABLE_USERS,
+				allColumns, SqliteAdapter.COLUMN_USER_ID + " ='" + userid + "'", null, null, null, null);
+		cursor.moveToFirst();
+		User newUser = cursorToEvent(cursor);
+		cursor.close();
+		close();
 		return newUser;
 	}
 	
@@ -60,6 +73,31 @@ public class UsersDataSource {
 		cursor.close();
 		return users;
 	}
+	
+	public User getUserFromUsername(String username) {		
+		Cursor cursor = database.query(SqliteAdapter.TABLE_USERS,
+				allColumns, SqliteAdapter.COLUMN_USERNAME + " ='" + username + "'", null, null, null, null);
+
+		cursor.moveToFirst();		
+		User user = cursorToEvent(cursor);
+			
+		// Make sure to close the cursor
+		cursor.close();
+		return user;
+	}
+	
+	public User getUserFromUid(Long uid) {				
+		Cursor cursor = database.query(SqliteAdapter.TABLE_USERS,
+				allColumns, SqliteAdapter.COLUMN_USER_ID + " ='" + uid + "'", null, null, null, null);
+
+		cursor.moveToFirst();		
+		User user = cursorToEvent(cursor);
+			
+		// Make sure to close the cursor
+		cursor.close();
+		return user;
+	}
+	
 	private User cursorToEvent(Cursor cursor) {
 		User user = new User();
 		user.setId(cursor.getLong(0));

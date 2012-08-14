@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">Calculomatic</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -19,4 +18,10 @@
 	<string name="event_place">Place</string>
 	<string name="empty"></string>
 	<string name="add_contributor">Add Contributor</string>
+	<string name="add_participant">Add Participant</string>
+	<string name="contributor_text">List of Contributors</string>
+	<string name="participant_text">List of Participants</string>
+	<string name="amount">Amount(in Rs.)</string>
+	<string name="list_events">List Events</string>
+	<string name="list_expenses">List Expenses</string>
 </resources>

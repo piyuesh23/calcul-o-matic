@@ -18,8 +18,8 @@ public class AddEventActivity extends Activity {
 		EditText event_place = (EditText)findViewById(R.id.event_place);
 		datasource = new EventsDataSource(this);
 		datasource.open();
-		datasource.createEvent(event_name.getText().toString(), event_place.getText().toString());
-		Intent intent = new Intent(this, AddContributorActivity.class);
+		Event e1 = datasource.createEvent(event_name.getText().toString(), event_place.getText().toString());		
+		Intent intent = new Intent(this, EventsActivity.class);		
 		startActivity(intent);
 	}
 }

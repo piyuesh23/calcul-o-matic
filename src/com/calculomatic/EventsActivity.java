@@ -26,15 +26,16 @@ public class EventsActivity extends Activity {
 		datasource.open();		
 		events = datasource.getAllEvents();
 		
-		ArrayAdapter<Event> arrayAdapter = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, events);
+		final ArrayAdapter<Event> arrayAdapter = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, events);
 		eventsList.setAdapter(arrayAdapter);
 				
 		eventsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-					Toast.makeText(getApplicationContext(),
-						"Click ListItem Number " + position, Toast.LENGTH_LONG)
-						.show();
+					Intent intent = new Intent(getApplicationContext(), ContributorActivity.class);					
+					Long eid= arrayAdapter.getItem(position).getId();
+					intent.putExtra("event", eid);
+					startActivity(intent);					
 			}
 		});
 	}

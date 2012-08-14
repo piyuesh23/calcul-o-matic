@@ -42,7 +42,8 @@ public class MainActivity extends Activity {
 		
 		for(User u : users) {
 			if((username.getText().toString().equals(u.getUsername().toString()))&&(password.getText().toString().equals(u.getPassword().toString()))) {
-			   	Intent intent = new Intent(this, EventsActivity.class);
+			   	Intent intent = new Intent(this, ProfileActivity.class);
+			   	intent.putExtra("uid", u.getId());
 		    	startActivity(intent);
 			}
 		}

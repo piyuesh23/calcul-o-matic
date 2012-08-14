@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class AddContributorActivity extends Activity {	
+public class AddParticipantActivity extends Activity {	
 	private UsersDataSource datasource;
-	private ContributorsDataSource contributordatasource;
+	private ParticipantsDataSource participantdatasource;
 	public List<String> Users = new ArrayList<String>();
 	public List<User> users = new ArrayList<User>();
 	public static String eventid;
@@ -22,7 +22,7 @@ public class AddContributorActivity extends Activity {
     
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_new_contributor);		
+		setContentView(R.layout.activity_new_participant);		
 	    Intent incomingintent = getIntent();
 		Bundle b = incomingintent.getExtras();
 		Spinner spinner = (Spinner) findViewById(R.id.spinner1); 
@@ -51,13 +51,13 @@ public class AddContributorActivity extends Activity {
 		datasource.open();
 		User u = datasource.getUserFromUsername(username);
 		datasource.close();
-		contributordatasource = new ContributorsDataSource(this);
-		contributordatasource.open();
-		Long uid = contributordatasource.addContributor(u.getId(), eventid.toString(), amount.getText().toString());		
-		contributordatasource.close();
+		participantdatasource = new ParticipantsDataSource(this);
+		participantdatasource.open();
+		Long uid = participantdatasource.addParticipant(u.getId(), eventid.toString(), amount.getText().toString());		
+		participantdatasource.close();
 		intent.putExtra("event", eventid);
 		if(uid == -1) {
-			Toast.makeText(getApplicationContext(), "add contributor failed", 10).show();
+			Toast.makeText(getApplicationContext(), "add participant failed", 10).show();
 		}
 		else {
 			startActivity(intent);

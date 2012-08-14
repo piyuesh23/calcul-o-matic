@@ -58,6 +58,18 @@ public class EventsDataSource {
 		cursor.close();
 		return events;
 	}
+	
+	public Event getEventById(String id) {		
+		Event e1 = new Event();
+		Cursor cursor = database.query(SqliteAdapter.TABLE_EVENTS,
+				allColumns, SqliteAdapter.COLUMN_EVENT_ID + " = " + Long.parseLong(id), null, null, null, null);
+
+		cursor.moveToFirst();		
+		Event event = cursorToEvent(cursor);
+		// Make sure to close the cursor
+		cursor.close();
+		return event;
+	}
 	private Event cursorToEvent(Cursor cursor) {
 		Event event = new Event();
 		event.setId(cursor.getLong(0));

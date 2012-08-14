@@ -4,13 +4,68 @@
         android:layout_height="fill_parent" 
         android:id="@+id/addcontributor">
 
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:choiceMode="multipleChoice" >
-        </ListView>
+            android:text="@string/empty"
+            android:layout_alignParentTop="true"            
+            android:layout_marginTop="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <TextView
+            android:id="@+id/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:text="@string/empty"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/Title"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/contributor_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:text="@string/contributor_text"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/Description"
+            android:textAppearance="?android:attr/textAppearanceLarge" />        
+        
+        <TextView
+            android:id="@+id/contributor_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:text="@string/empty"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/contributor_text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/participant_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:text="@string/participant_text"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/contributor_data"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <TextView
+            android:id="@+id/participant_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:text="@string/empty"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/participant_text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <Button
+	        android:id="@+id/add_participant"
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp"				
+	        android:text="@string/add_participant"
+	        android:layout_above="@+id/add_contributor"	        
+	        android:onClick="addParticipant"/>
+        
 		<Button
 	        android:id="@+id/add_contributor"
 	        android:layout_width="fill_parent"

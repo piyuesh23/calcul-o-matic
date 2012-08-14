@@ -37,7 +37,10 @@ public class RegisterActivity extends Activity {
 		}		
 		users = datasource.getAllUsers();
 		for(User u : users) {
-			if(u.getEmail().toString().equals(email.getText().toString())) {				
+			if(u.getEmail().toString().equals(email.getText().toString())) {								
+				error.setFocusableInTouchMode(true);
+				error.requestFocus();
+				error.setTextColor(1);
 				error.setText("Email Already Exists");
 			}
 		}
@@ -46,7 +49,13 @@ public class RegisterActivity extends Activity {
 			//do nothing
 		}
 		else {
-			datasource.createUser(username.getText().toString(), password.getText().toString(), email.getText().toString());
+			datasource.createUser(username.getText().toString(), password.getText().toString(), email.getText().toString());			
+			username.setText("");
+			password.setText("");
+			confirm_password.setText("");			
+			email.setText("");
+			error.setFocusableInTouchMode(true);
+			error.requestFocus();
 			error.setText("User " + username.getText().toString() + "created successfully.");
 		}
 	 }
