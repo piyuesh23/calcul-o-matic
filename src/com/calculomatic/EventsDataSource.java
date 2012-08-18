@@ -13,7 +13,7 @@ public class EventsDataSource {
 	private SQLiteDatabase database;
 	private SqliteAdapter dbHelper;
 	private String[] allColumns = { SqliteAdapter.COLUMN_EVENT_ID,
-			SqliteAdapter.COLUMN_EVENT, SqliteAdapter.COLUMN_PLACE};
+			SqliteAdapter.COLUMN_EVENT, SqliteAdapter.COLUMN_PLACE, SqliteAdapter.COLUMN_DATE};
 
 	public EventsDataSource(Context context) {
 		dbHelper = new SqliteAdapter(context);
@@ -27,10 +27,11 @@ public class EventsDataSource {
 		dbHelper.close();
 	}
 	
-	public Event createEvent(String event, String place) {
+	public Event createEvent(String event, String place, String date) {
 		ContentValues values = new ContentValues();
 		values.put(SqliteAdapter.COLUMN_EVENT, event);
 		values.put(SqliteAdapter.COLUMN_PLACE, place);
+		values.put(SqliteAdapter.COLUMN_DATE, date);
 		long insertId = database.insert(SqliteAdapter.TABLE_EVENTS, null,
 				values);
 		Cursor cursor = database.query(SqliteAdapter.TABLE_EVENTS,
@@ -75,6 +76,7 @@ public class EventsDataSource {
 		event.setId(cursor.getLong(0));
 		event.setEvent(cursor.getString(1));
 		event.setPlace(cursor.getString(2));
+		event.setDate(cursor.getString(3));		
 		return event;
 	}
 	

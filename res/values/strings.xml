@@ -16,6 +16,7 @@
 	<string name="event_name">Event Name</string>
 	<string name="create_event">Create Event</string>
 	<string name="event_place">Place</string>
+	<string name="event_date">Date</string>
 	<string name="empty"></string>
 	<string name="add_contributor">Add Contributor</string>
 	<string name="add_participant">Add Participant</string>

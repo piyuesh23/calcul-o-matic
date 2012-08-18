@@ -43,10 +43,12 @@ public class ContributorActivity extends Activity {
 		
 		TextView title = (TextView)findViewById(R.id.Title);
 		TextView description = (TextView)findViewById(R.id.Description);
+		TextView date = (TextView)findViewById(R.id.event_date);
 		TextView contrib_text = (TextView)findViewById(R.id.contributor_data);
 		TextView participant_text = (TextView)findViewById(R.id.participant_data);
 		title.setText(e1.getEvent());
 		description.setText(e1.getPlace());
+		date.setText(e1.getDate());
 		contributorsdatasource = new ContributorsDataSource(this);
 		contributorsdatasource.open();
 		contributors = contributorsdatasource.contributorsForEvent(eventid);

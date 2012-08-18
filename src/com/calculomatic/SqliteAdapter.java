@@ -18,7 +18,7 @@ public class SqliteAdapter extends SQLiteOpenHelper {
 	public static final String COLUMN_FULLNAME = "fullname";
 	public static final String COLUMN_PASSWORD = "password";
 	public static final String COLUMN_EMAIL = "email";
-	
+	public static final String COLUMN_DATE = "date";
 	public static final String COLUMN_UID = "uid";
 	public static final String COLUMN_EID = "eid";
 	public static final String COLUMN_AMOUNT = "amount";
@@ -30,6 +30,7 @@ public class SqliteAdapter extends SQLiteOpenHelper {
 			+ TABLE_EVENTS+ "(" + COLUMN_EVENT_ID
 			+ " integer primary key autoincrement, " + COLUMN_EVENT
 			+ " text not null, " + COLUMN_PLACE
+			+ " text not null, " + COLUMN_DATE
 			+ " text not null);";
 	
 	private static final String DATABASE_USERS_CREATE = "create table "

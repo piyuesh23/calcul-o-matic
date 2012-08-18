@@ -4,7 +4,8 @@ public class Event {
 	private long id;
 	private String event;
 	private String place;
-
+	private String date;
+	
 	public long getId() {
 		return id;
 	}
@@ -27,6 +28,14 @@ public class Event {
 	
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	// Will be used by the ArrayAdapter in the ListView

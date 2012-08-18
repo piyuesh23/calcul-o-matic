@@ -51,15 +51,34 @@
             android:inputType="text"            
             android:ems="10" />
 
+        <TextView
+            android:id="@+id/date_event"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/event_place"
+            android:layout_marginTop="30dp"
+            android:text="@string/event_date"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <DatePicker
+            android:id="@+id/dpResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"            
+            android:layout_below="@+id/date_event"
+            />        
+        
          <Button
             android:id="@+id/create_event"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_below="@+id/event_place"
+            android:layout_below="@+id/dpResult"
             android:layout_marginTop="30dp"
             android:text="@string/create_event" 
             android:onClick="sendMessage"/>
+
     </RelativeLayout>
 </ScrollView>   
