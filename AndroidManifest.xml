@@ -27,6 +27,10 @@
         <activity android:name="com.calculomatic.AddContributorActivity" />
         <activity android:name="com.calculomatic.AddParticipantActivity" />
         <activity android:name="com.calculomatic.ProfileActivity" />
+        <activity android:name="com.calculomatic.ExpenseActivity" />
+        <activity android:name="com.calculomatic.EditEventActivity" />
+        <activity android:name="com.calculomatic.UsersActivity" />
+        <activity android:name="com.calculomatic.EditUserActivity" />        
     </application>
 
 </manifest>

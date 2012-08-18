@@ -15,14 +15,16 @@ import android.widget.Toast;
 public class AddParticipantActivity extends Activity {	
 	private UsersDataSource datasource;
 	private ParticipantsDataSource participantdatasource;
+	private ContributorsDataSource contributorsdatasource;
 	public List<String> Users = new ArrayList<String>();
 	public List<User> users = new ArrayList<User>();
+	public List<Contributor> contributors = new ArrayList<Contributor>();
 	public static String eventid;
-
     
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_new_participant);		
+		setContentView(R.layout.activity_new_participant);
+		
 	    Intent incomingintent = getIntent();
 		Bundle b = incomingintent.getExtras();
 		Spinner spinner = (Spinner) findViewById(R.id.spinner1); 
@@ -35,11 +37,11 @@ public class AddParticipantActivity extends Activity {
 		for(User u : users) {		
 			Users.add(u.getUsername().toString());
 		}
-		
+				
 	    final ArrayAdapter<String> adapterForSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Users); 
         adapterForSpinner.setDropDownViewResource (android.R.layout.simple_spinner_dropdown_item); 
-        
-        spinner.setAdapter(adapterForSpinner);        
+                
+        spinner.setAdapter(adapterForSpinner);        	
 	}
 	
 	public void sendMessage(View v) {		

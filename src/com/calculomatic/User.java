@@ -3,6 +3,7 @@ package com.calculomatic;
 public class User {
 	private long id;
 	private String username;
+	private String fullname;	
 	private String password;
 	private String email;
 
@@ -20,6 +21,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 	
 	public String getPassword() {
@@ -40,7 +49,7 @@ public class User {
 	// Will be used by the ArrayAdapter in the ListView
 	@Override
 	public String toString() {
-		return email;
+		return username;
 	}
 
 }

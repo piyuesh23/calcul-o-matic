@@ -24,4 +24,9 @@
 	<string name="amount">Amount(in Rs.)</string>
 	<string name="list_events">List Events</string>
 	<string name="list_expenses">List Expenses</string>
+	<string name="delete">Delete</string>
+	<string name="edit">Edit</string>
+	<string name="expenseList">List of Expenses</string>
+	<string name="eventsList">List of Events</string>
+	<string name="usersList">List of Users</string>
 </resources>

@@ -77,4 +77,8 @@ public class EventsDataSource {
 		event.setPlace(cursor.getString(2));
 		return event;
 	}
+	
+	public void deleteEvent(Long eid) {
+		database.delete(SqliteAdapter.TABLE_EVENTS, SqliteAdapter.COLUMN_EVENT_ID + "=" + eid, null);		
+	}
 }

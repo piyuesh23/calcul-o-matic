@@ -4,7 +4,7 @@ public class Participant {
 	private long uid;
 	private long eid;
 	private Integer amount;
-	
+
 	public long getEid() {
 		return eid;
 	}
