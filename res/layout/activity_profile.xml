@@ -55,6 +55,33 @@
            android:layout_marginTop="10dp"
            android:text="@string/empty"
            android:textAppearance="?android:attr/textAppearanceSmall" />
+       
+       <TextView
+           android:id="@+id/contact"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"           
+           android:layout_below="@+id/email_value"
+           android:layout_marginTop="20dp"
+           android:text="@string/contact_num"
+           android:textAppearance="?android:attr/textAppearanceLarge" />
+
+       <TextView
+           android:id="@+id/contact_value"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"           
+           android:layout_below="@+id/contact"
+           android:layout_marginTop="10dp"
+           android:text="@string/empty"
+           android:textAppearance="?android:attr/textAppearanceSmall" />
+       <Button
+           android:id="@+id/notify_all"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"           
+           android:layout_marginBottom="100dp"
+           android:layout_alignParentBottom="true"
+           android:text="@string/notify_all"           
+           android:onClick="notifyAll"/>
 
        <Button
            android:id="@+id/listevents"

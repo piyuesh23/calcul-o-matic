@@ -15,7 +15,7 @@ public class UsersDataSource {
 	private SQLiteDatabase database;
 	public static final String LOG_TAG = "Calculomatic";
 	private SqliteAdapter dbHelper;
-	private String[] allColumns = { SqliteAdapter.COLUMN_USER_ID, SqliteAdapter.COLUMN_USERNAME, SqliteAdapter.COLUMN_FULLNAME, SqliteAdapter.COLUMN_PASSWORD, SqliteAdapter.COLUMN_EMAIL};
+	private String[] allColumns = { SqliteAdapter.COLUMN_USER_ID, SqliteAdapter.COLUMN_USERNAME, SqliteAdapter.COLUMN_FULLNAME, SqliteAdapter.COLUMN_PASSWORD, SqliteAdapter.COLUMN_EMAIL, SqliteAdapter.COLUMN_CONTACT};
 
 	public UsersDataSource(Context context) {
 		dbHelper = new SqliteAdapter(context);
@@ -29,20 +29,20 @@ public class UsersDataSource {
 		dbHelper.close();
 	}
 	
-	public User createUser(String username, String fullname, String password, String email) {
+	public User createUser(String username, String fullname, String password, String email, String contact) {
 		ContentValues values = new ContentValues();
 		values.put(SqliteAdapter.COLUMN_USERNAME, username);
 		values.put(SqliteAdapter.COLUMN_FULLNAME, fullname);
 		values.put(SqliteAdapter.COLUMN_PASSWORD, password);
 		values.put(SqliteAdapter.COLUMN_EMAIL, email);
+		values.put(SqliteAdapter.COLUMN_CONTACT, contact);
 		long insertId = database.insert(SqliteAdapter.TABLE_USERS, null,
 				values);
 		Cursor cursor = database.query(SqliteAdapter.TABLE_USERS,
 				allColumns, SqliteAdapter.COLUMN_USER_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
-		User newUser = cursorToEvent(cursor);
-		Log.v(LOG_TAG, newUser.getFullname().toString());
+		User newUser = cursorToEvent(cursor);		
 		cursor.close();
 		close();
 		return newUser;
@@ -54,6 +54,7 @@ public class UsersDataSource {
 		cv.put(SqliteAdapter.COLUMN_FULLNAME, u.getFullname());
 		cv.put(SqliteAdapter.COLUMN_EMAIL, u.getEmail());
 		cv.put(SqliteAdapter.COLUMN_PASSWORD, u.getPassword());
+		cv.put(SqliteAdapter.COLUMN_CONTACT, u.getContact());
 		int row_count = database.update(SqliteAdapter.TABLE_USERS, cv, SqliteAdapter.COLUMN_USER_ID + "=" + u.getId(), null);		
 		return row_count;
 	}
@@ -122,6 +123,7 @@ public class UsersDataSource {
 		user.setFullname(cursor.getString(2));
 		user.setPassword(cursor.getString(3));
 		user.setEmail(cursor.getString(4));
+		user.setContact(cursor.getString(5));
 		return user;
 	}
 }

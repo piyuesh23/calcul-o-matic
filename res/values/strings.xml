@@ -30,4 +30,6 @@
 	<string name="expenseList">List of Expenses</string>
 	<string name="eventsList">List of Events</string>
 	<string name="usersList">List of Users</string>
+	<string name="notify_all">Notify All</string>
+	<string name="contact_num">Contact Number</string>
 </resources>

@@ -51,6 +51,15 @@ public class EditUserActivity extends Activity {
 		fullname.setId(2);
 		layout.addView(fullname);
 		
+		TextView contact_label = new TextView(this);
+		contact_label.setText("Contact Number");
+		layout.addView(contact_label);
+		
+		EditText contact = new EditText(this);
+		contact.setText(u.getContact().toString());
+		contact.setId(6);
+		layout.addView(contact);
+		
 		TextView email_label = new TextView(this);
 		email_label.setText("email");
 		layout.addView(email_label);
@@ -96,12 +105,14 @@ public class EditUserActivity extends Activity {
             	EditText email = (EditText) findViewById(3);
             	EditText password = (EditText) findViewById(4);
             	EditText confirm_password = (EditText) findViewById(5);
-            	String result = validateProfile(username.getText().toString(), fullname.getText().toString(), email.getText().toString(), password.getText().toString(), confirm_password.getText().toString());
+            	EditText contact = (EditText) findViewById(6);
+            	String result = validateProfile(username.getText().toString(), fullname.getText().toString(), email.getText().toString(), contact.getText().toString(), password.getText().toString(), confirm_password.getText().toString());
             	if(result.equals("success")) {
 	            	u.setUsername(username.getText().toString());
 	            	u.setFullname(fullname.getText().toString());
 	            	u.setEmail(email.getText().toString());
 	            	u.setPassword(password.getText().toString());
+	            	u.setContact(contact.getText().toString());
 	            	u.setId(uid);
 	            	usersdatasource = new UsersDataSource(getApplicationContext());
 	            	usersdatasource.open();
@@ -122,8 +133,8 @@ public class EditUserActivity extends Activity {
 		});
 	}
 	
-	public String validateProfile(String username, String fullname, String email, String password, String confirm_password) {
-		if((username == "") || (fullname == "") || (email == "")) {
+	public String validateProfile(String username, String fullname, String email, String contact, String password, String confirm_password) {
+		if((username == "") || (fullname == "") || (email == "") || (contact == "")) {
 			return "Empty Fields";
 		}
 		else if(!(password.equals(confirm_password))) {

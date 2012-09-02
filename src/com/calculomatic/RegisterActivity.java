@@ -25,6 +25,7 @@ public class RegisterActivity extends Activity {
 		EditText confirm_password = (EditText)findViewById(R.id.confirm_password);
 		EditText email = (EditText)findViewById(R.id.email);
 		EditText fullname = (EditText)findViewById(R.id.full_name);
+		EditText contact = (EditText)findViewById(R.id.contact_value);
 		TextView error = (TextView)findViewById(R.id.error);
 		datasource = new UsersDataSource(this);
 		datasource.open();				
@@ -49,7 +50,7 @@ public class RegisterActivity extends Activity {
 			//do nothing
 		}
 		else {
-			datasource.createUser(username.getText().toString(), fullname.getText().toString(), password.getText().toString(), email.getText().toString());			
+			datasource.createUser(username.getText().toString(), fullname.getText().toString(), password.getText().toString(), email.getText().toString(), contact.getText().toString());			
 			username.setText("");
 			password.setText("");
 			confirm_password.setText("");			

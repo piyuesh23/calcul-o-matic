@@ -16,10 +16,12 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	private UsersDataSource datasource;
 	List<User> users = new ArrayList<User>();
-	public static final String LOG_TAG = "Calculomatic";
+	public static final String LOG_TAG = "Calculomatic";	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	datasource = new UsersDataSource(this);
+		datasource.open();				
+        super.onCreate(savedInstanceState);        
         setContentView(R.layout.activity_main);        				
     }
 
